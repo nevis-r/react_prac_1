@@ -1,56 +1,18 @@
-const Header = ({course}) => {
-  return (
-    <div>
-      <p>
-        {course}
-      </p>
-    </div>
-  )
-}
-
-const Part = ({parts}) => {
-  return (
-    <div>
-      <p>{parts[0].name} {parts[0].exercises}</p>
-      <p>{parts[1].name} {parts[1].exercises}</p>
-      <p>{parts[2].name} {parts[2].exercises}</p>
-    </div>
-  )
-}
-
-const Total = ({parts}) => {
-  return (
-    <div>
-      <p>Number of exercises {parts[0].exercises + parts[1].exercises+ parts[2].exercises}</p>
-    </div>
-  )
-}
+import { useState } from 'react'
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      {
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  }
+  const [ counter, setCounter ] = useState(0)
 
   return (
-    <>
-      <Header course={course.name}/>
-      <Part parts={course.parts}/>
-      <Total parts={course.parts}/>
-    </>
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+        plus
+      </button>
+      <button onClick={() => setCounter(0)}> 
+        zero
+      </button>
+    </div>
   )
 }
 
